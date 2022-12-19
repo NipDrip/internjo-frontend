@@ -6,6 +6,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: 'home', component: () => import('pages/Home.vue') },
+      { path: 'company', component: () => import('pages/StudentCompany.vue') },
+      { path: 'company/internships', component: () => import('pages/StudentCompanyInternships.vue') },
       { path: 'internships', component: () => import('pages/Internships.vue') },
       { path: 'savedinternships', component: () => import('pages/SavedInternships.vue') },
       { path: 'discovercompanies', component: () => import('pages/DiscoverCompanies.vue') },
@@ -18,10 +20,11 @@ const routes = [
   },
   {
     path: '/company',
-    redirect: '/company/home',
+    redirect: '/company/reviews',
     component: () => import('layouts/CompanyMainLayout.vue'),
     children: [
-      { path: 'home', component: () => import('pages/CompanyHome.vue') },
+      { path: 'reviews', component: () => import('src/pages/CompanyReviews.vue') },
+      { path: 'internships', component: () => import('src/pages/CompanyInternships.vue') },
     ]
   },
   {

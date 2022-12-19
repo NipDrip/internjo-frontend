@@ -7,14 +7,13 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          Title
+          {{company.name}}
         </q-toolbar-title>
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="home" label="Home" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
+        <q-route-tab to="reviews" label="Reviews" />
+        <q-route-tab to="internships" label="Posted Internships" />
       </q-tabs>
     </q-header>
 
@@ -24,3 +23,12 @@
 
   </q-layout>
 </template>
+
+<script setup>
+  import { ref } from 'vue'
+  const company = ref(
+    {
+      name: "Orange",
+    }
+)
+</script>

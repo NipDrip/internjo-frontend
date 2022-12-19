@@ -4,10 +4,9 @@
       <q-card flat bordered class="my-card">
         <q-card-section>
           <div class="text-h2"> {{internship.job_title}} </div>
-          <div class="text-subtitle2 text-primary">
-            {{internship.company_name}} <span class="text-black">|</span>
-            {{internship.location}}
-          </div>
+            <q-btn flat class="bg-white text-primary" to="/student/company">
+            {{internship.company_name}} || {{internship.location}}
+          </q-btn>
         </q-card-section>
 
         <q-separator inset />
@@ -66,35 +65,6 @@
 
       </q-card>
     </div>
-
-    <!-- <div class="q-pa-md row items-start q-gutter-md">
-      <q-card flat bordered class="my-card" style="width:500px">
-        <q-card-section>
-          <div class="text-h6">Contact Information</div>
-        </q-card-section>
-
-        <q-separator inset />
-
-        <q-card-section class="row" style>
-          <q-input outlined class="q-pa-sm" v-model="fname" label="First Name" dense />
-          <q-input outlined class="q-pa-sm" v-model="lname" label="Last Name" dense />
-          <q-input outlined class="q-pa-sm" v-model="email" type="email" label="Email" dense />
-        </q-card-section>
-
-        <q-separator inset />
-
-        <q-card-section>
-          <div class="text-h6"> Change Password </div>
-          <q-input outlined class="q-pa-sm" v-model="oldpass" type="password" label="Old Password" dense />
-          <q-input outlined class="q-pa-sm" v-model="newpass1" type="password" label="New Password" dense />
-          <q-input outlined class="q-pa-sm" v-model="newpass2" type="password" label="Confirm New Password" dense />
-        </q-card-section>
-
-        <q-card-actions vertical align="right">
-          <q-btn class="bg-orange">Save Changes</q-btn>
-        </q-card-actions>
-      </q-card>
-    </div> -->
   </div>
 </template>
 
