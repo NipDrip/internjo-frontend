@@ -4,7 +4,7 @@
   <div class="q-pa-md row items-start q-gutter-md">
     <q-card flat bordered class="my-card" style="width:500px">
       <q-card-section>
-        <div class="text-h6">Upload Your Documents Here</div>
+        <div class="text-h6">Add Documents to Your Profile</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">

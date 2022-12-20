@@ -28,11 +28,11 @@
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
 
-          <q-input filled v-model="companyname" label="Company Name *" />
+          <q-input filled v-model="companyName" label="Company Name *" />
 
           <q-input filled v-model="jobKeywords" label="Job Keywords *" />
 
-          <q-input filled v-model="location" label="Location *" />
+          <q-input filled v-model="city" label="Location *" />
 
           <div>
             <q-btn label="Filter" type="submit" color="primary" />
@@ -71,17 +71,18 @@ const companies = ref([
   },
 ])
 
+const companyName = ref(null)
 const jobKeywords = ref(null)
-const company = ref(null)
 const city = ref(null)
 
 function onSubmit() {
 
 }
 
+
 function onReset() {
+  companyName.value = null
   jobKeywords.value = null
-  company.value = null
   city.value = null
 }
 </script>
