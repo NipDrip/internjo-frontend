@@ -61,6 +61,11 @@
         <q-card-section class="text-black" align="right">
           <span class="q-pa-md text-bold text-red"> {{internship.days_left}} days left </span>
           <q-btn class="bg-primary text-white" to="/student/internship/apply">Apply Now</q-btn>
+          <q-btn flat round color="red-8" icon="eva-alert-circle-outline" to="internship/report">
+            <q-tooltip>
+              Report Company
+            </q-tooltip>
+          </q-btn>
         </q-card-section>
 
       </q-card>

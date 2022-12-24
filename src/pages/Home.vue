@@ -25,7 +25,6 @@
               Save Internship
             </q-tooltip>
           </q-btn>
-          <q-btn flat round color="red-8" icon="eva-alert-circle-outline" to="internship/report"/>
         </q-card-actions>
       </q-card>
     </div>

@@ -30,7 +30,7 @@
           <div class="q-pa-md text-body1">
             Add Cover Letter Here:
           </div>
-          <q-file filled v-model="resume" label="Cover Letter">
+          <q-file filled v-model="coverletter" label="Cover Letter">
             <template v-slot:prepend>
               <q-icon name="cloud_upload" />
             </template>
@@ -41,10 +41,10 @@
           </div>
         </q-card-section>
 
-        <q-separator />
+        <q-separator inset/>
 
         <q-card-actions vertical align="right">
-          <q-btn class="bg-primary text-white">Apply</q-btn>
+          <q-btn class="bg-primary text-white" to="apply/thanks">Apply</q-btn>
         </q-card-actions>
       </q-card>
 
@@ -54,5 +54,7 @@
 
 
 <script setup>
-
+  import { ref } from 'vue'
+  const resume = ref()
+  const coverletter = ref()
 </script>

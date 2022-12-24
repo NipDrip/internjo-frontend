@@ -16,6 +16,7 @@ const routes = [
       { path: 'internship', component: () => import('pages/Internship.vue') },
       { path: 'internship/report', component: () => import('pages/Report.vue') },
       { path: 'internship/apply', component: () => import('pages/InternshipApply.vue') },
+      { path: 'internship/apply/thanks', component: () => import('pages/ApplyThanks.vue') },
     ]
   },
   {
