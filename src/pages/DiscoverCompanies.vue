@@ -10,9 +10,9 @@
 
           <q-separator />
           <q-card-section>
-            <q-rating size="18px" v-model="stars" :max="5" color="primary" />
-            <span class="text-caption text-grey q-ml-sm">4.2 (551)</span>
-            <q-btn flat class="float-right"> Visit Company Account </q-btn>
+            <q-rating size="20px" v-model=company.rating :max="5" color="primary" icon-selected="star" icon-half="star_half" readonly/>
+            <span class="text-caption text-grey q-ml-sm">{{company.rating}}</span>
+            <q-btn flat class="float-right" to="company"> Visit Company Account </q-btn>
           </q-card-section>
         </q-card>
       </div>

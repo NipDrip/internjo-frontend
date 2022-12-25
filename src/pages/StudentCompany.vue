@@ -5,7 +5,7 @@
         <q-card-section>
           <div class="text-h3"> {{company.name}} </div>
           <q-rating size="20px" v-model=company.rating :max="5" color="primary" icon-selected="star" icon-half="star_half" readonly/>
-          <span class="text-caption text-grey q-ml-sm">{{company.rating}}/5</span>
+          <span class="text-caption text-grey q-ml-sm">{{company.rating}}</span>
         </q-card-section>
 
         <q-separator inset />

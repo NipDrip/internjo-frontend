@@ -8,6 +8,8 @@ const routes = [
       { path: 'home', component: () => import('pages/Home.vue') },
       { path: 'company', component: () => import('pages/StudentCompany.vue') },
       { path: 'company/internships', component: () => import('pages/StudentCompanyInternships.vue') },
+      { path: 'company/review', component: () => import('pages/StudentCompanyReview.vue') },
+      { path: 'company/review/thanks', component: () => import('pages/ReviewThanks.vue') },
       { path: 'internships', component: () => import('pages/Internships.vue') },
       { path: 'savedinternships', component: () => import('pages/SavedInternships.vue') },
       { path: 'discovercompanies', component: () => import('pages/DiscoverCompanies.vue') },
@@ -15,6 +17,7 @@ const routes = [
       { path: 'profile', component: () => import('pages/Profile.vue') },
       { path: 'internship', component: () => import('pages/Internship.vue') },
       { path: 'internship/report', component: () => import('pages/Report.vue') },
+      { path: 'internship/report/thanks', component: () => import('pages/ReportThanks.vue') },
       { path: 'internship/apply', component: () => import('pages/InternshipApply.vue') },
       { path: 'internship/apply/thanks', component: () => import('pages/ApplyThanks.vue') },
     ]

@@ -19,10 +19,9 @@
           <q-separator />
 
           <q-card-actions class="text-black" align="right" style="height:55px">
-            <q-btn flat>Read More</q-btn>
+            <q-btn flat to="internship">Read More</q-btn>
             <q-btn @click="offer.saved = !offer.saved" flat round color="yellow-8"
               :icon="offer.saved ? 'eva-bookmark' : 'eva-bookmark-outline'" />
-            <q-btn flat round color="red-8" icon="eva-alert-circle-outline" />
           </q-card-actions>
         </q-card>
       </div>

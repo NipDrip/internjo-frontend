@@ -15,6 +15,10 @@
             <div class="text-subtitle2"> {{ application.location }} </div>
           </q-card-section>
 
+          <q-card-actions v-if="application.status=='Hired'" class="text-black" align="right" >
+            <q-btn flat to="company/review">Review Company</q-btn>
+          </q-card-actions>
+
         </q-card>
       </div>
     </div>
