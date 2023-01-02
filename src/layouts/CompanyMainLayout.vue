@@ -12,8 +12,10 @@
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="reviews" label="Reviews" />
-        <q-route-tab to="internships" label="Posted Internships" />
+        <q-route-tab to="/company/profile" label="Profile" />
+        <q-route-tab to="/company/internships" label="Posted Internships" />
+        <q-route-tab to="/company/applicants" label="Applicants" />
+        <q-route-tab to="/company/reviews" label="Reviews" />
       </q-tabs>
     </q-header>
 

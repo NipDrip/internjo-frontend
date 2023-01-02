@@ -24,11 +24,16 @@ const routes = [
   },
   {
     path: '/company',
-    redirect: '/company/reviews',
+    redirect: '/company/profile',
     component: () => import('layouts/CompanyMainLayout.vue'),
     children: [
-      { path: 'reviews', component: () => import('src/pages/CompanyReviews.vue') },
+      { path: 'profile', component: () => import('src/pages/CompanyProfile.vue') },
       { path: 'internships', component: () => import('src/pages/CompanyInternships.vue') },
+      { path: 'applicants', component: () => import('src/pages/CompanyApplicants.vue') },
+      { path: 'reviews', component: () => import('src/pages/CompanyReviews.vue') },
+      { path: 'internship/edit', component: () => import('src/pages/CompanyInternshipEdit.vue') },
+      { path: 'internship/view', component: () => import('src/pages/CompanyInternshipView.vue') },
+      { path: 'internship/applicants', component: () => import('src/pages/CompanyInternshipApplicants.vue') },
     ]
   },
   {

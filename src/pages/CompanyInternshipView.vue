@@ -3,10 +3,7 @@
     <div class="q-pa-md items-start q-gutter-md">
       <q-card flat bordered class="my-card">
         <q-card-section>
-          <div class="text-h2"> {{internship.job_title}} </div>
-            <q-btn flat class="bg-white text-primary" to="/student/company">
-            {{internship.company_name}} || {{internship.location}}
-          </q-btn>
+          <div class="text-h2"> {{ internship.job_title }} </div>
         </q-card-section>
 
         <q-separator inset />
@@ -16,8 +13,9 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <div class ="q-pb-md"> Internship Duration: <span class="text-primary text-bold" >{{internship.duration}} months </span> </div>
-          <div> {{internship.description}} </div>
+          <div class="q-pb-md"> Internship Duration: <span class="text-primary text-bold">{{ internship.duration }} months
+            </span> </div>
+          <div> {{ internship.description }} </div>
         </q-card-section>
 
         <q-separator inset />
@@ -28,11 +26,11 @@
 
         <q-card-section class="q-pt-none">
           <div v-for="document in internship.required_documents">
-            • {{document}}
+            • {{ document }}
           </div>
         </q-card-section>
 
-        <q-separator inset/>
+        <q-separator inset />
 
         <q-card-section>
           <div class="text-h5"> Qualifications: </div>
@@ -40,21 +38,15 @@
 
         <q-card-section class="q-pt-none">
           <div v-for="qual in internship.qualifications">
-            • {{qual}}
+            • {{ qual }}
           </div>
         </q-card-section>
 
         <q-separator inset />
 
-        <q-card-section class="text-black" align="right">
-          <!-- <span class="q-pa-md text-bold text-red"> {{internship.days_left}} days left </span> -->
-          <q-btn class="bg-primary text-white" to="/student/internship/apply">Apply Now</q-btn>
-          <q-btn flat round color="red-8" icon="eva-alert-circle-outline" to="internship/report">
-            <q-tooltip>
-              Report Company
-            </q-tooltip>
-          </q-btn>
-        </q-card-section>
+        <q-card-actions class="text-black" align="right">
+          <q-btn class="bg-primary text-white" to="edit">View</q-btn>
+        </q-card-actions>
 
       </q-card>
     </div>
