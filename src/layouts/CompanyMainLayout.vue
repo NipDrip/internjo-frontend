@@ -13,7 +13,7 @@
 
       <q-tabs align="left">
         <q-route-tab to="/company/profile" label="Profile" />
-        <q-route-tab to="/company/internships" label="Posted Internships" />
+        <q-route-tab to="/company/internships" label="Internships" />
         <q-route-tab to="/company/applicants" label="Applicants" />
         <q-route-tab to="/company/reviews" label="Reviews" />
       </q-tabs>
@@ -30,7 +30,7 @@
   import { ref } from 'vue'
   const company = ref(
     {
-      name: "Orange",
+      name: "Amazon",
     }
 )
 </script>

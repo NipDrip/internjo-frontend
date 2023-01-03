@@ -53,14 +53,15 @@
           </div>
 
           <div class="q-py-xs">
-            <q-btn class="bg-secondary text-white" @click="addQual" fab icon="add" />
+            <q-btn class="bg-secondary text-white" @click="addQual">Add Qualifications</q-btn>
           </div>
         </q-card-section>
 
         <q-separator inset />
 
         <q-card-actions class="text-black" align="right">
-          <q-btn class="bg-primary text-white"> Post </q-btn>
+          <q-btn class="bg-primary text-white" to="view">Save & View</q-btn>
+          <q-btn class="bg-primary text-white">Save</q-btn>
         </q-card-actions>
 
       </q-card>
@@ -74,14 +75,14 @@ import { format } from 'quasar'
 
 const internship = ref(
   {
-    job_title: "",
-    company_name: "",
+    job_title: "Software Engineer",
+    company_name: "shariket a7mad jaber lal ta3leem",
     duration: 3,
-    description: "",
-    location: "",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    location: "abdoun",
     resume: true,
     cover_letter: false,
-    qualifications: ["", ""],
+    qualifications: ["1", "2", "3", "4"],
     days_left: 7,
   },
 )

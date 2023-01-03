@@ -1,6 +1,7 @@
 <template>
   <div class="row justify-evenly">
     <div class="row" style="width:1200px">
+      <h3>Applicants for {{ applications[0].job_title }}</h3>
       <div v-for="application in applications" class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card shadow-6" style="width:1200px">
 

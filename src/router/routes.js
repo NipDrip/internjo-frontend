@@ -33,6 +33,7 @@ const routes = [
       { path: 'reviews', component: () => import('src/pages/CompanyReviews.vue') },
       { path: 'internship/edit', component: () => import('src/pages/CompanyInternshipEdit.vue') },
       { path: 'internship/view', component: () => import('src/pages/CompanyInternshipView.vue') },
+      { path: 'internship/new', component: () => import('src/pages/CompanyInternshipNew.vue') },
       { path: 'internship/applicants', component: () => import('src/pages/CompanyInternshipApplicants.vue') },
     ]
   },

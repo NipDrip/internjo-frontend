@@ -8,7 +8,6 @@
 
             <q-card-section class="bg-primary text-white">
               <div class="text-h6">{{ application.job_title }}</div>
-              <div class="text-subtitle2"> {{ application.location }} </div>
             </q-card-section>
 
             <q-card-section class="text-black">

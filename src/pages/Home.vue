@@ -6,7 +6,7 @@
 
         <q-card-section class="bg-primary text-white" style="height:80px" >
           <div class="text-h6">{{offer.job_title}} </div>
-          <div class="text-subtitle2">{{offer.company_name}} | {{offer.location}} | </div>
+          <div class="text-subtitle2">{{offer.company_name}} | {{offer.location}} </div>
         </q-card-section>
 
         <q-separator />
