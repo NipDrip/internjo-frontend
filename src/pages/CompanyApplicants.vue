@@ -17,8 +17,7 @@
             </q-card-section>
 
             <q-card-actions>
-              <q-btn class="bg-orange">Download Resume</q-btn>
-              <q-btn class="bg-orange">Download Cover Letter</q-btn>
+              <q-btn class="bg-orange">Download Documents</q-btn>
             </q-card-actions>
 
           </q-card>
