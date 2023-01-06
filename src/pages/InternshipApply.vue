@@ -12,7 +12,7 @@
           <div class="q-pa-md text-body1">
             Add Resume Here:
           </div>
-          <q-file filled v-model="resume" label="Resume">
+          <q-file filled v-model=documents.resume label="Resume">
             <template v-slot:prepend>
               <q-icon name="cloud_upload" />
             </template>
@@ -30,7 +30,7 @@
           <div class="q-pa-md text-body1">
             Add Cover Letter Here:
           </div>
-          <q-file filled v-model="coverletter" label="Cover Letter">
+          <q-file filled v-model=documents.coverletter label="Cover Letter">
             <template v-slot:prepend>
               <q-icon name="cloud_upload" />
             </template>
@@ -55,6 +55,10 @@
 
 <script setup>
   import { ref } from 'vue'
-  const resume = ref()
-  const coverletter = ref()
+  const documents = ref(
+    {
+      resume: null,
+      coverletter: null,
+    }
+  )
 </script>

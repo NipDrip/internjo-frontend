@@ -15,7 +15,7 @@
             <div class="text-subtitle2"> {{ application.location }} </div>
           </q-card-section>
 
-          <q-card-actions v-if="application.status=='Hired'" class="text-black" align="right" >
+          <q-card-actions v-if="application.status=='Accepted'" class="text-black" align="right" >
             <q-btn flat to="company/review">Review Company</q-btn>
           </q-card-actions>
 
@@ -31,14 +31,14 @@ import { ref } from 'vue'
 import { format } from 'quasar'
 const applications = ref([
   {
-    status: "Withdrawn",
+    status: "No longer under consideration",
     job_title: "Software Engineer",
     company_name: "Orange",
     location: "abdoun",
     date: "Oct 13, 2022"
   },
   {
-    status: "Hired",
+    status: "Accepted",
     job_title: "Sales Offices",
     company_name: "Maqsam",
     location: "abdoun",
@@ -52,7 +52,7 @@ const applications = ref([
     date: "Oct 13, 2022"
   },
   {
-    status: "Under consideration",
+    status: "No longer under consideration",
     job_title: "Software Engineer",
     company_name: "google",
     location: "abdoun",

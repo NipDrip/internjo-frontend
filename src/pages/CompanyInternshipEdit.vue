@@ -29,12 +29,15 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <div class="q-gutter-sm">
-            <q-checkbox v-model=internship.resume label="Resume" />
+          <div v-for="(doc, i) in internship.documents">
+            <div class="q-py-xs row">
+              <q-input class="q-pr-md" style="width:250px" filled v-model=internship.documents[i] :dense="true" />
+              <q-btn round color="red" @click="removeDocument(i)" icon="eva-close-outline" />
+            </div>
           </div>
 
-          <div class="q-gutter-sm">
-            <q-checkbox v-model=internship.cover_letter label="Cover Letter" />
+          <div class="q-py-xs">
+            <q-btn class="bg-secondary text-white" @click="addDocument" icon="add" fab />
           </div>
         </q-card-section>
 
@@ -53,14 +56,15 @@
           </div>
 
           <div class="q-py-xs">
-            <q-btn class="bg-secondary text-white" @click="addQual" fab icon="add" />
+            <q-btn class="bg-secondary text-white" @click="addQual" icon="add" fab />
           </div>
         </q-card-section>
 
         <q-separator inset />
 
         <q-card-actions class="text-black" align="right">
-          <q-btn class="bg-primary text-white"> Post </q-btn>
+          <q-btn class="bg-primary text-white" to="view">Save & View</q-btn>
+          <q-btn class="bg-primary text-white">Save</q-btn>
         </q-card-actions>
 
       </q-card>
@@ -74,17 +78,23 @@ import { format } from 'quasar'
 
 const internship = ref(
   {
-    job_title: "",
-    company_name: "",
+    job_title: "Software Engineer",
+    company_name: "shariket a7mad jaber lal ta3leem",
     duration: 3,
-    description: "",
-    location: "",
-    resume: true,
-    cover_letter: false,
-    qualifications: ["", ""],
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    location: "abdoun",
+    documents: ["resume", "cover letter", "recommendation letter"],
+    qualifications: ["1", "2", "3", "4"],
     days_left: 7,
-  },
+  }
 )
+function addDocument() {
+  internship.value.documents.push("")
+}
+
+function removeDocument(i) {
+  internship.value.documents.splice(i, 1)
+}
 
 function addQual() {
   internship.value.qualifications.push("")

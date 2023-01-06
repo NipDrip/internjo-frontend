@@ -7,29 +7,26 @@
 
 
             <q-card-section class="bg-primary text-white">
-              <div class="text-h6">{{ application.job_title }}</div>
+              <div class="text-h6" ><span class="text-bold"> Name: </span> {{ application.student.first_name }} {{application.student.last_name}}</div>
             </q-card-section>
 
             <q-card-section class="text-black">
-              <div> <span class="text-bold"> Name: </span> {{ application.student.first_name }} {{ application.student.last_name }} </div>
               <div> <span class="text-bold"> Email: </span> {{ application.student.email }}</div>
               <div> <span class="text-bold"> Phone Number: </span> {{ application.student.phone_number }}</div>
-              <div class="q-pt-sm"> <q-btn class="bg-orange">Download Documents</q-btn> </div>
             </q-card-section>
-            <q-separator inset />
-            <q-card-actions align="right" >
-              <q-btn class="bg-red text-white" to="internship/applicant/reject"> Reject Applicant</q-btn>
-              <q-btn class="bg-green text-white" to="internship/applicant/accept"> Accept Applicant</q-btn>
-            </q-card-actions>
 
+            <q-card-actions>
+              <q-btn fab class="bg-green text-white"> Accept </q-btn>
+              <q-btn fab class="bg-red text-white"> Decline </q-btn>
+            </q-card-actions>
           </q-card>
         </div>
-      <template v-slot:loading>
-        <div class="row justify-center q-my-md">
-          <q-spinner-dots color="primary" size="40px" />
-        </div>
-      </template>
-    </q-infinite-scroll>
+        <template v-slot:loading>
+          <div class="row justify-center q-my-md">
+            <q-spinner-dots color="primary" size="40px" />
+          </div>
+        </template>
+      </q-infinite-scroll>
     </div>
   </div>
 </template>
