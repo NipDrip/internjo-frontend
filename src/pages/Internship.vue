@@ -17,6 +17,7 @@
 
         <q-card-section class="q-pt-none">
           <div class ="q-pb-md"> Internship Duration: <span class="text-primary text-bold" >{{internship.duration}} months </span> </div>
+          <div class="q-pb-md"> Internship Salary: <span class="text-primary text-bold">{{internship.pay}} JD/month </span></div>
           <div> {{internship.description}} </div>
         </q-card-section>
 
@@ -68,12 +69,13 @@ const darko = ref("3")
 const internship = ref(
   {
     job_title: "Software Developement Engineer",
-    company_name: "shariket a7mad jaber lal ta3leem",
+    company_name: "Amazon",
     duration: 3,
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    location: "abdoun",
+    pay: 300,
+    location: "5th Circle",
     required_documents: ["Resume", "Cover Letter"],
-    qualifications: ["1", "2", "3", "4"],
+    qualifications: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Lorem ipsum dolor sit amet, consectetur adipiscing elit"],
     days_left: 7,
   },
 )

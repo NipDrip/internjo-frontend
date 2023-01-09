@@ -54,6 +54,12 @@
           </div>
         </q-card-section>
 
+        <q-separator inset/>
+
+        <q-card-actions align="right">
+          <q-btn fab class="bg-green text-white"> follow company account</q-btn>
+        </q-card-actions>
+
       </q-card>
     </div>
   </div>

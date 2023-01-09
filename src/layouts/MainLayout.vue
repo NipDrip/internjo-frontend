@@ -97,7 +97,6 @@ const notifications = ref([
   {
     title: "Orange has a new Software Engineering Intern position",
   },
-
 ])
 
 const leftDrawerOpen = ref(true)

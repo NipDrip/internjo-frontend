@@ -12,6 +12,7 @@
           <q-card-section>
             <q-rating size="20px" v-model=company.rating :max="5" color="primary" icon-selected="star" icon-half="star_half" readonly/>
             <span class="text-caption text-grey q-ml-sm">{{company.rating}}</span>
+            <q-btn flat class="float-right"> Follow </q-btn>
             <q-btn flat class="float-right" to="company"> Visit Company Account </q-btn>
           </q-card-section>
         </q-card>

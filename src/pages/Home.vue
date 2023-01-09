@@ -36,6 +36,9 @@
 <script setup>
   import { ref } from 'vue'
   import { format } from 'quasar'
+  import { api } from 'boot/axios'
+  let car = null
+  api.get('https://catfact.ninja/fact').then((res) => { car = res.date})
   const offers = ref([
     {
       job_title: "sde jjj",
@@ -79,6 +82,5 @@
       location: "abdoun",
       saved: false,
     },
-
   ])
 </script>

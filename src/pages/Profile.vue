@@ -7,20 +7,24 @@
         <div class="text-h6">Add Documents to Your Profile</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
-        <q-file filled v-model="resume" label="Resume">
-          <template v-slot:prepend>
-            <q-icon name="cloud_upload" />
-          </template>
-        </q-file>
+      <q-card-section v-for="(doc , i) in profile.documents" class="q-pt-none">
+        <div class="q-py-xs row">
+          <div>
+            <q-file filled v-model=profile.documents[i] :label=doc style="width:350px">
+              <template v-slot:prepend>
+                <q-icon name="cloud_upload" />
+              </template>
+            </q-file>
+          </div>
+          <div class="q-px-md">
+            <q-btn round color="red" @click="removeDocument(i)" icon="eva-close-outline" />
+          </div>
+        </div>
       </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        <q-file filled v-model="coverletter" label="Cover Letter">
-          <template v-slot:prepend>
-            <q-icon name="cloud_upload" />
-          </template>
-        </q-file>
+      <q-card-section>
+        <div class="q-py-xs">
+          <q-btn class="bg-secondary text-white" @click="addDocument" icon="add" fab />
+        </div>
       </q-card-section>
     </q-card>
   </div>
@@ -59,7 +63,19 @@
 
 <script setup>
   import { ref } from 'vue'
-  const resume = ref()
-  const coverletter = ref()
+
+  function addDocument() {
+    profile.value.documents.push("")
+  }
+
+  function removeDocument(i) {
+    profile.value.documents.splice(i, 1)
+  }
+
+  const profile = ref(
+    {
+      documents: ["resume", "cover_letter"],
+    }
+  )
   const fname = ref('xd')
 </script>

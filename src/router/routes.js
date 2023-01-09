@@ -32,6 +32,7 @@ const routes = [
       { path: 'applicants', component: () => import('src/pages/CompanyApplicants.vue') },
       { path: 'reviews', component: () => import('src/pages/CompanyReviews.vue') },
       { path: 'employees', component: () => import('src/pages/CompanyEmployees.vue') },
+      { path: 'activeemployees', component: () => import('src/pages/CompanyActiveEmployees.vue') },
       { path: 'internship/edit', component: () => import('src/pages/CompanyInternshipEdit.vue') },
       { path: 'internship/view', component: () => import('src/pages/CompanyInternshipView.vue') },
       { path: 'internship/new', component: () => import('src/pages/CompanyInternshipNew.vue') },
@@ -40,6 +41,7 @@ const routes = [
       { path: 'internship/applicant/accept/sent', component: () => import('src/pages/CompanyApplicantAcceptSent.vue') },
       { path: 'internship/applicant/reject', component: () => import('src/pages/CompanyApplicantReject.vue') },
       { path: 'internship/applicant/reject/sent', component: () => import('src/pages/CompanyApplicantRejectSent.vue') },
+
     ]
   },
   {
