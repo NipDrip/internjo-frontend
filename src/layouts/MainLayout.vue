@@ -40,7 +40,6 @@
             <img src="https://cdn.quasar.dev/img/boy-avatar.png">
           </q-avatar>
           <div class="text-weight-bold">Mohammad Al-Kilani</div>
-          <div>@shanks</div>
         </div>
       </q-img>
 
@@ -68,6 +67,18 @@
 
             <q-item-section>
               Saved Internships
+            </q-item-section>
+
+          </q-item>
+
+          <q-item clickable v-ripple>
+
+            <q-item-section avatar>
+              <q-icon name="eva-log-out-outline" />
+            </q-item-section>
+
+            <q-item-section>
+              Logout
             </q-item-section>
 
           </q-item>

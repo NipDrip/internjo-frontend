@@ -35,10 +35,15 @@
 
           <q-input filled v-model="city" label="Location *" />
 
+          <div align="left">
+            <q-checkbox v-model="followed" label="Followed" />
+          </div>
+
           <div>
             <q-btn label="Filter" type="submit" color="primary" />
             <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
           </div>
+
 
         </q-form>
       </q-card>
@@ -51,6 +56,7 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { format } from 'quasar'
+const followed = ref(false)
 const companies = ref([
   {
     company_name: "orange",
