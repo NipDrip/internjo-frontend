@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-evenly">
     <div class="row" style="width:1000px">
-      <div v-for="offer in offers" class="q-pa-md row items-start q-gutter-md">
+      <div v-for="(offer, i) in offers" class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card" style="width:450px;">
 
           <q-card-section class="bg-primary text-white" style="height:80px">
@@ -19,8 +19,8 @@
           <q-separator />
 
           <q-card-actions class="text-black" align="right" style="height:55px">
-            <q-btn flat to="internship">Read More</q-btn>
-            <q-btn @click="offer.saved = !offer.saved" flat round color="yellow-8"
+            <q-btn flat @click="$router.push('internship/'+offer.id)">Read More</q-btn>
+            <q-btn @click="unsave(i)" flat round color="yellow-8"
               :icon="offer.saved ? 'eva-bookmark' : 'eva-bookmark-outline'" />
           </q-card-actions>
         </q-card>
@@ -63,56 +63,26 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { format } from 'quasar'
-const payed = ref(false)
-const offers = ref([
-  {
-    job_title: "sde jjj",
-    company_name: "shariket a7mad jaber lal ta3leem",
-    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-    location: "abdoun",
-    saved: false,
-  },
-  {
-    job_title: "sde jaber",
-    company_name: "dar jaber",
-    description: "dar jaber",
-    location: "abdoun",
-    saved: true
-  },
-  {
-    job_title: "sde jjj",
-    company_name: "jjj",
-    description: "jjj",
-    location: "abdoun",
-    saved: false,
-  },
-  {
-    job_title: "sde jjj",
-    company_name: "jjj",
-    description: "jjj",
-    location: "abdoun",
-    saved: false,
-  },
-  {
-    job_title: "sde jjj",
-    company_name: "jjj",
-    description: "jjj",
-    location: "abdoun",
-    saved: false,
-  },
-  {
-    job_title: "sde jjj",
-    company_name: "jjj",
-    description: "jjj",
-    location: "abdoun",
-    saved: false,
-  },
+import { api } from 'src/boot/axios';
+import routes from 'src/router/routes';
 
-])
+const offers = ref()
+api.get('http://localhost:3000/internships').then((res) => {
+  console.log(res)
+  offers.value = res.data
+})
+
+function unsave(i) {
+  offers.value[i].saved = !offers.value[i].saved
+  api.put('http://localhost:3000/saved_internships/' + offers.value[i].id).then((res) => {
+    console.log(res)
+  })
+}
 
 const jobKeywords = ref(null)
 const company = ref(null)
 const city = ref(null)
+const payed = ref(false)
 
 function onSubmit() {
 

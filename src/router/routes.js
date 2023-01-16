@@ -1,5 +1,13 @@
 
+
 const routes = [
+  {
+    path: '/',
+    component: () => import('layouts/Login.vue'),
+    children: [
+      {path: 'login', component: () => import('pages/Login.vue')},
+    ]
+  },
   {
     path: '/student',
     redirect: '/student/home',
@@ -15,11 +23,11 @@ const routes = [
       { path: 'discovercompanies', component: () => import('pages/DiscoverCompanies.vue') },
       { path: 'applications', component: () => import('pages/Applications.vue') },
       { path: 'profile', component: () => import('pages/Profile.vue') },
-      { path: 'internship', component: () => import('pages/Internship.vue') },
-      { path: 'internship/report', component: () => import('pages/Report.vue') },
-      { path: 'internship/report/thanks', component: () => import('pages/ReportThanks.vue') },
-      { path: 'internship/apply', component: () => import('pages/InternshipApply.vue') },
-      { path: 'internship/apply/thanks', component: () => import('pages/ApplyThanks.vue') },
+      { path: 'internship/:id', component: () => import('pages/Internship.vue') },
+      { path: 'internship/:id/report', component: () => import('pages/Report.vue') },
+      { path: 'internship/:id/report/thanks', component: () => import('pages/ReportThanks.vue') },
+      { path: 'internship/:id/apply', component: () => import('pages/InternshipApply.vue') },
+      { path: 'internship/:id/apply/thanks', component: () => import('pages/ApplyThanks.vue') },
     ]
   },
   {
@@ -79,5 +87,7 @@ const routes = [
     component: () => import('pages/ErrorNotFound.vue')
   }
 ]
+
+
 
 export default routes

@@ -39,7 +39,7 @@
           <q-avatar size="56px" class="q-mb-sm">
             <img src="https://cdn.quasar.dev/img/boy-avatar.png">
           </q-avatar>
-          <div class="text-weight-bold">Mohammad Al-Kilani</div>
+          <div class="text-weight-bold">{{student_name}}</div>
         </div>
       </q-img>
 
@@ -71,7 +71,7 @@
 
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple @click="logout" to="/login">
 
             <q-item-section avatar>
               <q-icon name="eva-log-out-outline" />
@@ -98,6 +98,28 @@
 
 <script setup>
 import { ref } from 'vue'
+import { api } from 'src/boot/axios';
+import { Cookies } from 'quasar';
+
+const student_name = ref()
+api.get('http://localhost:3000/students/' + Cookies.get('id')).then((res) => {
+  console.log(res)
+  student_name.value = res.data.name
+})
+
+function logout() {
+  api.delete('http://localhost:3000/auth/sign_out').then((res) => {
+    console.log(res)
+    Cookies.remove('id')
+    Cookies.remove('uid')
+    Cookies.remove('client')
+    Cookies.remove('access-token')
+    api.defaults.headers.common['uid'] = null
+    api.defaults.headers.common['client'] = null
+    api.defaults.headers.common['access-token'] = null
+  })
+}
+
 const notifications = ref([
   {
     title: "Orange has a new Software Engineering Intern position",

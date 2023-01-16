@@ -40,7 +40,7 @@
       <q-card-section class="row" style >
         <q-input outlined class="q-pa-sm" v-model="fname" label="First Name" dense/>
         <q-input outlined class="q-pa-sm" v-model="lname" label="Last Name" dense />
-        <q-input outlined class="q-pa-sm" v-model="email" type="email" label="Email" dense />
+        <q-input outlined class="q-pa-sm" v-model="email" type="email" label="Email" dense readonly/>
       </q-card-section>
 
       <q-separator inset />

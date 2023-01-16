@@ -17,7 +17,7 @@
 
         <q-card-section class="q-pt-none">
           <div class ="q-pb-md"> Internship Duration: <span class="text-primary text-bold" >{{internship.duration}} months </span> </div>
-          <div class="q-pb-md"> Internship Salary: <span class="text-primary text-bold">{{internship.pay}} JD/month </span></div>
+          <div class="q-pb-md"> Internship Salary: <span class="text-primary text-bold">{{internship.salary_per_month}} JD/month </span></div>
           <div> {{internship.description}} </div>
         </q-card-section>
 
@@ -28,7 +28,7 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <div v-for="document in internship.required_documents">
+          <div v-for="document in internship.documents_needed">
             • {{document}}
           </div>
         </q-card-section>
@@ -49,9 +49,9 @@
 
         <q-card-section class="text-black" align="right">
           <!-- <span class="q-pa-md text-bold text-red"> {{internship.days_left}} days left </span> -->
-          <q-btn fab class="bg-primary text-white" to="/student/internship/apply">Apply Now</q-btn>
+          <q-btn fab class="bg-primary text-white" @click="$router.push(internship_id+'/apply')">Apply Now</q-btn>
 
-          <q-btn @click="internship.saved = !internship.saved" flat round color="yellow-8"
+          <q-btn @click="unsave" flat round color="yellow-8"
             :icon="internship.saved ? 'eva-bookmark' : 'eva-bookmark-outline'">
             <q-tooltip>
               Save Internship
@@ -73,20 +73,23 @@
 <script setup>
 import { ref } from 'vue'
 import { format } from 'quasar'
-const darko = ref("3")
-const internship = ref(
-  {
-    job_title: "Software Developement Engineer",
-    company_name: "Amazon",
-    duration: 3,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    pay: 300,
-    location: "5th Circle",
-    required_documents: ["Resume", "Cover Letter"],
-    qualifications: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Lorem ipsum dolor sit amet, consectetur adipiscing elit"],
-    days_left: 7,
-    saved: false,
-  },
-)
+import { api } from 'src/boot/axios';
+import { useRoute } from "vue-router";
+
+const internship_id = useRoute().params.id;
+
+const internship = ref({})
+api.get('http://localhost:3000/internships/' + internship_id).then((res) => {
+  console.log(res.data)
+  internship.value = res.data
+})
+
+
+function unsave() {
+  internship.value.saved = !internship.value.saved
+  api.put('http://localhost:3000/saved_internships/' + internship_id).then((res) => {
+    console.log(res)
+  })
+}
 
 </script>
