@@ -20,8 +20,12 @@
 
           <q-card-actions class="text-black" align="right" style="height:55px">
             <q-btn flat @click="$router.push('internship/'+offer.id)">Read More</q-btn>
-            <q-btn @click="unsave(i)" flat round color="yellow-8"
-              :icon="offer.saved ? 'eva-bookmark' : 'eva-bookmark-outline'" />
+            <q-btn @click="unsave(i)" flat round color="yellow-8" :icon="offer.saved ? 'eva-bookmark' : 'eva-bookmark-outline'">
+              <q-tooltip>
+                Save Internship
+              </q-tooltip>
+            </q-btn>
+
           </q-card-actions>
         </q-card>
       </div>
@@ -37,7 +41,7 @@
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
 
-          <q-input filled v-model="jobKeywords" label="Job Keywords *" />
+          <q-input filled v-model=jobKeywords label="Job Keywords *" />
 
           <q-input filled v-model="company" label="Company *" />
 
@@ -79,13 +83,17 @@ function unsave(i) {
   })
 }
 
-const jobKeywords = ref(null)
-const company = ref(null)
-const city = ref(null)
-const payed = ref(false)
+const jobKeywords = ref("")
+const company = ref("")
+const city = ref("")
+const payed = ref(true)
 
 function onSubmit() {
-
+  api.get('http://localhost:3000/search_internships/', { params: { job_keywords: jobKeywords.value, company: company.value, city: city.value, payed: payed.value }}).then((res) => {
+    // console.log({ job_keywords: jobKeywords.value, company: company.value, city: city.value, payed: payed.value })
+    console.log(res)
+    offers.value = res.data
+  })
 }
 
 function onReset() {

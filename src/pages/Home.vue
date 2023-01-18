@@ -1,5 +1,7 @@
 <template>
-
+  <div v-if="offers.length==0" class="q-pa-lg">
+    <h3>Your feed is empty! Follow companies to have a more lively feed!</h3>
+  </div>
   <div class="row">
     <div v-for="(offer, i) in offers" class="q-pa-md row items-start q-gutter-md">
       <q-card class="my-card" style="width:500px;">
@@ -19,7 +21,7 @@
         <q-separator />
 
         <q-card-actions class="text-black" align="right" style="height:55px">
-          <q-btn flat to="/student/internship">Read More</q-btn>
+          <q-btn flat @click="$router.push('internship/'+offer.id)">Read More</q-btn>
           <q-btn @click="unsave(i)" flat round color="yellow-8" :icon="offer.saved ? 'eva-bookmark' : 'eva-bookmark-outline'">
             <q-tooltip>
               Save Internship
@@ -38,9 +40,8 @@
   import { format } from 'quasar'
   import { api } from 'boot/axios'
 
-  //this api call is not correct!!!
   const offers = ref()
-  api.get('http://localhost:3000/internships').then( (res) => {
+  api.get('http://localhost:3000/internships_companies').then( (res) => {
     console.log(res)
     offers.value = res.data
   })
@@ -52,48 +53,4 @@
     })
   }
 
-  // const offers = ref([
-  //   {
-  //     job_title: "Software Engineer",
-  //     company_name: "Amazon",
-  //     description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-  //     location: "5th Circle",
-  //     saved: false,
-  //   },
-  //   {
-  //     job_title: "Software Engineer",
-  //     company_name: "Amazon",
-  //     description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-  //     location: "5th Circle",
-  //     saved: false,
-  //   },
-  //   {
-  //     job_title: "Software Engineer",
-  //     company_name: "Amazon",
-  //     description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-  //     location: "5th Circle",
-  //     saved: false,
-  //   },
-  //   {
-  //     job_title: "Software Engineer",
-  //     company_name: "Amazon",
-  //     description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-  //     location: "5th Circle",
-  //     saved: false,
-  //   },
-  //   {
-  //     job_title: "Software Engineer",
-  //     company_name: "Amazon",
-  //     description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-  //     location: "5th Circle",
-  //     saved: false,
-  //   },
-  //   {
-  //     job_title: "Software Engineer",
-  //     company_name: "Amazon",
-  //     description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-  //     location: "5th Circle",
-  //     saved: false,
-  //   },
-  // ])
 </script>

@@ -20,6 +20,9 @@
             <q-input v-model.number="internship.duration" type="number" filled label="Internship Duration in Months"
               style="max-width: 200px" />
           </div>
+          <div class="q-pa-md">
+            <q-input v-model.number="internship.salary_per_month" filled label="Salary Per Month" style="max-width: 200px" />
+          </div>
         </q-card-section>
 
         <q-separator inset />
@@ -85,6 +88,7 @@ const internship = ref(
     location: "",
     documents: ["Resume"],
     qualifications: ["", ""],
+    salary_per_month: null,
     days_left: 7,
   },
 )

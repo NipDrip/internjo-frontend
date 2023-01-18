@@ -36,7 +36,7 @@ export default route(function (/* { store, ssrContext } */) {
       return
     }
     api.get('http://localhost:3000/auth/validate_token').then((res) => {
-      console.log(res)
+      // console.log(res)
       console.log("authenticated")
       next()
     }).catch((err) => {

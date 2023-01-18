@@ -19,7 +19,7 @@
         <q-separator />
 
         <q-card-actions class="text-black" align="right" style="height:55px">
-          <q-btn flat to="internship">Read More</q-btn>
+          <q-btn flat @click="$router.push('internship/'+offer.id)">Read More</q-btn>
           <q-btn @click="unsave(i)" flat round color="yellow-8"
             :icon="offer.saved ? 'eva-bookmark' : 'eva-bookmark-outline'" />
         </q-card-actions>

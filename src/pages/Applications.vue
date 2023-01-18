@@ -10,13 +10,13 @@
 
           <q-separator />
           <q-card-section class="bg-teal text-white">
-            <div class="text-h6">{{ application.company_name }} | {{application.job_title}}</div>
+            <div class="text-h6">{{ application.company_name }} | {{application.position}}</div>
             <div class="text-subtitle2"> {{ application.date}} </div>
             <div class="text-subtitle2"> {{ application.location }} </div>
           </q-card-section>
 
-          <q-card-actions v-if="application.status=='Accepted'" class="text-black" align="right" >
-            <q-btn flat to="company/review">Review Company</q-btn>
+          <q-card-actions class="text-black" align="right" >
+            <q-btn flat @click="$router.push('application/' + application.id + '/review')">Review Company</q-btn>
           </q-card-actions>
 
         </q-card>
@@ -29,48 +29,12 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { format } from 'quasar'
-const applications = ref([
-  {
-    status: "No longer under consideration",
-    job_title: "Software Engineer",
-    company_name: "Orange",
-    location: "abdoun",
-    date: "Oct 13, 2022"
-  },
-  {
-    status: "Accepted",
-    job_title: "Sales Offices",
-    company_name: "Maqsam",
-    location: "abdoun",
-    date: "Oct 13, 2022"
-  },
-  {
-    status: "No longer under consideration",
-    job_title: "Software Engineer",
-    company_name: "Maqsam",
-    location: "abdoun",
-    date: "Oct 13, 2022"
-  },
-  {
-    status: "No longer under consideration",
-    job_title: "Software Engineer",
-    company_name: "google",
-    location: "abdoun",
-    date: "Oct 13, 2022"
-  },
-])
+import { api } from 'src/boot/axios';
+// @click="$router.push('applications/'+application.id+'review')"
+const applications = ref([])
 
-const jobKeywords = ref(null)
-const company = ref(null)
-const city = ref(null)
-
-function onSubmit() {
-
-}
-
-function onReset() {
-  jobKeywords.value = null
-  company.value = null
-  city.value = null
-}
+api.get('http://localhost:3000/applications/').then( (res) => {
+  console.log(res)
+  applications.value = res.data
+})
 </script>

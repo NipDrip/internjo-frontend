@@ -18,8 +18,9 @@
             </q-card-section>
             <q-separator inset />
             <q-card-actions align="right" >
-              <q-btn class="bg-red text-white" to="internship/applicant/reject"> Reject Applicant</q-btn>
-              <q-btn class="bg-green text-white" to="internship/applicant/accept"> Accept Applicant</q-btn>
+              <q-btn class="bg-green text-white" to="internship/applicant/email"> Send Email to Applicant</q-btn>
+              <q-btn class="bg-red text-white" to="internship/applicant/email" > Remove card</q-btn>
+
             </q-card-actions>
 
           </q-card>

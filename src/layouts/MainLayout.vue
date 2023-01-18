@@ -103,7 +103,6 @@ import { Cookies } from 'quasar';
 
 const student_name = ref()
 api.get('http://localhost:3000/students/' + Cookies.get('id')).then((res) => {
-  console.log(res)
   student_name.value = res.data.name
 })
 

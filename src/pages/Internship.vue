@@ -4,7 +4,7 @@
       <q-card flat bordered class="my-card">
         <q-card-section>
           <div class="text-h2"> {{internship.job_title}} </div>
-            <q-btn flat class="bg-white text-primary" to="/student/company">
+            <q-btn flat class="bg-white text-primary" @click="$router.push('/student/company/'+internship.company_id)">
             {{internship.company_name}} || {{internship.location}}
           </q-btn>
         </q-card-section>
@@ -49,7 +49,7 @@
 
         <q-card-section class="text-black" align="right">
           <!-- <span class="q-pa-md text-bold text-red"> {{internship.days_left}} days left </span> -->
-          <q-btn fab class="bg-primary text-white" @click="$router.push(internship_id+'/apply')">Apply Now</q-btn>
+          <q-btn fab class="bg-primary text-white" @click="$router.push(internship.id+'/apply')">Apply Now</q-btn>
 
           <q-btn @click="unsave" flat round color="yellow-8"
             :icon="internship.saved ? 'eva-bookmark' : 'eva-bookmark-outline'">
@@ -58,7 +58,7 @@
             </q-tooltip>
           </q-btn>
 
-          <q-btn flat round color="red-8" icon="eva-alert-circle-outline" to="internship/report">
+          <q-btn flat round color="red-8" icon="eva-alert-circle-outline" @click="$router.push(internship.id+'/report')">
             <q-tooltip>
               Report Company
             </q-tooltip>
