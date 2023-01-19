@@ -45,7 +45,7 @@
         <q-separator inset />
 
         <q-card-actions class="text-black" align="right">
-          <q-btn class="bg-primary text-white" to="edit">View</q-btn>
+          <q-btn class="bg-primary text-white" to="edit">Edit</q-btn>
         </q-card-actions>
 
       </q-card>

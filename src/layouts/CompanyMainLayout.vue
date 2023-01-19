@@ -9,16 +9,14 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          {{company.name}} Admin
+          {{company_name}} Admin Account
         </q-toolbar-title>
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="/company/admin/internships" label="Internships" />
-        <q-route-tab to="/company/admin/applicants" label="Applicants" />
-        <q-route-tab to="/company/admin/reviews" label="Reviews" />
-        <q-route-tab to="/company/admin/employees" label="Employee Requests" />
+        <q-route-tab to="/company/admin/inactiveemployees" label="Inactive Employee" />
         <q-route-tab to="/company/admin/activeemployees" label="Active Employees" />
+        <q-route-tab to="/company/admin/reviews" label="Reviews" />
       </q-tabs>
     </q-header>
 
@@ -40,7 +38,7 @@
 
               </q-item>
 
-              <q-item clickable v-ripple >
+              <q-item clickable v-ripple @click="logout" to="/login">
 
                 <q-item-section avatar>
                   <q-icon name="eva-log-out-outline" />
@@ -51,6 +49,7 @@
                 </q-item-section>
 
               </q-item>
+
             </q-list>
           </q-scroll-area>
         </q-drawer>
@@ -64,11 +63,29 @@
 
 <script setup>
   import { ref } from 'vue'
-  const company = ref(
-    {
-      name: "Amazon",
-    }
-  )
+  import { api } from 'src/boot/axios';
+  import { Cookies } from 'quasar';
+
+  const company_name = ref("")
+  api.get('http://localhost:3000/company').then((res) => {
+    console.log(res)
+    company_name.value = res.data.name
+  })
+
+function logout() {
+  api.delete('http://localhost:3000/auth/sign_out').then((res) => {
+    console.log(res)
+    Cookies.remove('id')
+    Cookies.remove('uid')
+    Cookies.remove('client')
+    Cookies.remove('access-token')
+    api.defaults.headers.common['uid'] = null
+    api.defaults.headers.common['client'] = null
+    api.defaults.headers.common['access-token'] = null
+  })
+
+}
+
   const leftDrawerOpen = ref(true)
   function toggleLeftDrawer() {
     leftDrawerOpen.value = !leftDrawerOpen.value

@@ -1,4 +1,7 @@
 <template>
+  <div v-if="applications.length==0" class="q-pa-lg">
+    <h3>You have no applications at the moment.</h3>
+  </div>
   <div class="row justify-evenly">
     <div class="row" style="width:1200px">
       <div v-for="application in applications" class="q-pa-md row items-start q-gutter-md">

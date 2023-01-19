@@ -1,5 +1,7 @@
 <template>
-
+  <div v-if="offers.length==0" class="q-pa-lg">
+    <h3>You have no saved internships at the moment.</h3>
+  </div>
   <div class="row">
     <div v-for="(offer, i) in offers" class="q-pa-md row items-start q-gutter-md">
       <q-card class="my-card" style="width:500px;">

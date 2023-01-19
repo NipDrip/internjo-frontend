@@ -14,12 +14,12 @@
               <div> <span class="text-bold"> Name: </span> {{ application.student.first_name }} {{ application.student.last_name }} </div>
               <div> <span class="text-bold"> Email: </span> {{ application.student.email }}</div>
               <div> <span class="text-bold"> Phone Number: </span> {{ application.student.phone_number }}</div>
-              <div class="q-pt-sm"> <q-btn class="bg-orange">Download Documents</q-btn> </div>
+              <div class="q-pt-sm"> <q-btn class="bg-primary text-yellow">Download Documents</q-btn> </div>
             </q-card-section>
             <q-separator inset />
             <q-card-actions align="right" >
-              <q-btn class="bg-green text-white" to="internship/applicant/email"> Send Email to Applicant</q-btn>
-              <q-btn class="bg-red text-white" to="internship/applicant/email" > Remove card</q-btn>
+              <q-btn class="bg-green text-white" to="internship/1/applicant/1/email"> Send Email to Applicant</q-btn>
+              <q-btn class="bg-red text-white"> Remove card</q-btn>
 
             </q-card-actions>
 

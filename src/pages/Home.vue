@@ -40,7 +40,7 @@
   import { format } from 'quasar'
   import { api } from 'boot/axios'
 
-  const offers = ref()
+  const offers = ref([])
   api.get('http://localhost:3000/internships_companies').then( (res) => {
     console.log(res)
     offers.value = res.data

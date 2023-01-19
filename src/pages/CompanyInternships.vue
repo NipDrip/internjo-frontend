@@ -8,14 +8,14 @@
           <q-card class="my-card shadow-6" style="width:1200px">
 
 
-            <q-card-section class="bg-teal text-white">
+            <q-card-section class="bg-secondary text-white">
               <div class="text-h6">{{internship.job_title}}</div>
               <div class="text-subtitle2"> {{ internship.date}} </div>
             </q-card-section>
 
             <q-card-actions class="text-black" align="right">
-              <q-btn flat to="internship/edit">Edit Internship</q-btn>
-              <q-btn flat to="internship/applicants">View Applicants</q-btn>
+              <q-btn flat to="internship/1/edit">Edit Internship</q-btn>
+              <q-btn flat to="internship/1/applicants">View Applicants</q-btn>
             </q-card-actions>
 
           </q-card>
@@ -27,7 +27,7 @@
         </template>
 
         <q-page-sticky position="bottom-right" :offset="[18, 18]">
-          <q-btn fab icon="add" color="primary" to="internship/new">
+          <q-btn fab icon="add" color="primary" to="internship/1/new">
             <q-tooltip>
               New Position
             </q-tooltip>

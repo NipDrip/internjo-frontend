@@ -117,6 +117,7 @@ function logout() {
     api.defaults.headers.common['client'] = null
     api.defaults.headers.common['access-token'] = null
   })
+
 }
 
 const notifications = ref([

@@ -48,7 +48,17 @@ function login (){
       api.defaults.headers.common['uid'] = Cookies.get('uid')
       api.defaults.headers.common['client'] = Cookies.get('client')
       api.defaults.headers.common['access-token'] = Cookies.get('access-token')
-      router.push({ path: '/student' })
+
+      if(res.data.data.entity_name == 'student')
+        router.push({ path: '/student' })
+
+      if (res.data.data.entity_name == 'company')
+        router.push({ path: '/company/admin' })
+
+      if (res.data.data.entity_name == 'employee'){
+        router.push({ path: '/company/employee' })
+
+      }
 })
 }
 </script>
