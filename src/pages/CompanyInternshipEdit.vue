@@ -1,4 +1,5 @@
 <template>
+  <div class="q-pa-lg text-h2"> Edit Internship </div>
   <div class="items-center column" style="width:1200px">
     <div class="q-pa-md items-start q-gutter-md" style="width:1200px">
       <q-card flat bordered class="my-card">
@@ -33,9 +34,9 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <div v-for="(doc, i) in internship.documents">
+          <div v-for="(doc, i) in internship.documents_needed">
             <div class="q-py-xs row">
-              <q-input class="q-pr-md" style="width:250px" filled v-model=internship.documents[i] :dense="true" />
+              <q-input class="q-pr-md" style="width:250px" filled v-model=internship.documents_needed[i] :dense="true" />
               <q-btn round color="red" @click="removeDocument(i)" icon="eva-close-outline" />
             </div>
           </div>
@@ -67,8 +68,8 @@
         <q-separator inset />
 
         <q-card-actions class="text-black" align="right">
-          <q-btn class="bg-primary text-white" to="view">Save & View</q-btn>
-          <q-btn class="bg-primary text-white">Save</q-btn>
+          <q-btn class="bg-primary text-white" @click="saveAndView" to="view">Save & View</q-btn>
+          <q-btn class="bg-red text-white" @click="deleteInternship" to="deleted">Delete</q-btn>
         </q-card-actions>
 
       </q-card>
@@ -79,26 +80,31 @@
 <script setup>
 import { ref } from 'vue'
 import { format } from 'quasar'
+import { api } from 'src/boot/axios';
+import { useRoute } from "vue-router";
 
-const internship = ref(
-  {
-    job_title: "Software Engineer",
-    company_name: "shariket a7mad jaber lal ta3leem",
-    duration: 3,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    location: "abdoun",
-    documents: ["resume", "cover letter", "recommendation letter"],
-    salary_per_month: null,
-    qualifications: ["1", "2", "3", "4"],
-    days_left: 7,
-  }
-)
+const internship_id = useRoute().params.id;
+
+const internship = ref({})
+api.get('http://localhost:3000/internships/'+internship_id).then((res) => {
+  internship.value = res.data
+})
+
+function saveAndView() {
+  api.put('http://localhost:3000/internships/' + internship_id, internship.value)
+}
+
+function deleteInternship() {
+  api.delete('http://localhost:3000/internships/' + internship_id).then((res) => {
+    console.log(res)
+  })
+}
 function addDocument() {
-  internship.value.documents.push("")
+  internship.value.documents_needed.push("")
 }
 
 function removeDocument(i) {
-  internship.value.documents.splice(i, 1)
+  internship.value.documents_needed.splice(i, 1)
 }
 
 function addQual() {

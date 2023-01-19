@@ -14,8 +14,8 @@
             </q-card-section>
 
             <q-card-actions class="text-black" align="right">
-              <q-btn flat to="internship/1/edit">Edit Internship</q-btn>
-              <q-btn flat to="internship/1/applicants">View Applicants</q-btn>
+              <q-btn flat @click="$router.push('internship/' + internship.id + '/edit')">Edit Internship</q-btn>
+              <q-btn flat @click="$router.push('internship/' + internship.id + '/applicants')">View Applicants</q-btn>
             </q-card-actions>
 
           </q-card>
@@ -27,7 +27,7 @@
         </template>
 
         <q-page-sticky position="bottom-right" :offset="[18, 18]">
-          <q-btn fab icon="add" color="primary" to="internship/1/new">
+          <q-btn fab icon="add" color="primary" @click="$router.push('internship/new')">
             <q-tooltip>
               New Position
             </q-tooltip>
@@ -44,36 +44,11 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { format } from 'quasar'
-const internships = ref([
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    last_edit: "Oct 13, 2022"
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    last_edit: "Oct 13, 2022"
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    last_edit: "Oct 13, 2022"
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    last_edit: "Oct 13, 2022"
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    last_edit: "Oct 13, 2022"
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    last_edit: "Oct 13, 2022"
-  },
-])
+import { api } from 'src/boot/axios';
+
+const internships = ref()
+api.get('http://localhost:3000/internships').then((res) => {
+  console.log(res)
+  internships.value = res.data
+})
 </script>

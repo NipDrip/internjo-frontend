@@ -1,4 +1,5 @@
 <template>
+  <div class="q-pa-lg text-h2"> Create New Internship </div>
   <div class="items-center column" style="width:1200px">
     <div class="q-pa-md items-start q-gutter-md" style="width:1200px">
       <q-card flat bordered class="my-card">
@@ -32,9 +33,9 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <div v-for="(doc, i) in internship.documents">
+          <div v-for="(doc, i) in internship.documents_needed">
             <div class="q-py-xs row">
-              <q-input class="q-pr-md" style="width:250px" filled v-model=internship.documents[i] :dense="true" />
+              <q-input class="q-pr-md" style="width:250px" filled v-model=internship.documents_needed[i] :dense="true" />
               <q-btn round color="red" @click="removeDocument(i)" icon="eva-close-outline" />
             </div>
           </div>
@@ -67,7 +68,7 @@
         <q-separator inset />
 
         <q-card-actions class="text-black" align="right">
-          <q-btn class="bg-primary text-white"> Post </q-btn>
+          <q-btn class="bg-primary text-white" @click="addInternship($router)"> Post </q-btn>
         </q-card-actions>
 
       </q-card>
@@ -78,27 +79,28 @@
 <script setup>
 import { ref } from 'vue'
 import { format } from 'quasar'
+import { api } from 'src/boot/axios';
 
-const internship = ref(
-  {
-    job_title: "",
-    company_name: "",
-    duration: 3,
-    description: "",
-    location: "",
-    documents: ["Resume"],
-    qualifications: ["", ""],
-    salary_per_month: null,
-    days_left: 7,
-  },
-)
+const internship = ref({
+  documents_needed: [],
+  qualifications: [],
+})
+
+async function addInternship(router) {
+  let internship_id
+  await api.post('http://localhost:3000/internships/', internship.value).then((res) => {
+    console.log(res)
+    internship_id = res.data.id
+  })
+  router.push(internship_id + '/view')
+}
 
 function addDocument() {
-  internship.value.documents.push("")
+  internship.value.documents_needed.push("")
 }
 
 function removeDocument(i) {
-  internship.value.documents.splice(i, 1)
+  internship.value.documents_needed.splice(i, 1)
 }
 
 function addQual() {

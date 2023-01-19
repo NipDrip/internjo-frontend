@@ -15,7 +15,8 @@
 
       <q-tabs align="left">
         <q-route-tab to="/company/employee/internships" label="Internships" />
-        <q-route-tab to="/company/employee/applicants" label="All Applicants" />
+        <q-route-tab to="/company/employee/newapplicants" label="New Applicants" />
+        <q-route-tab to="/company/employee/seenapplicants" label="Seen Applicants" />
         <q-route-tab to="/company/employee/reviews" label="Reviews" />
       </q-tabs>
     </q-header>

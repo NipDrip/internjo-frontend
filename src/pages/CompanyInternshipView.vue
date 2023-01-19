@@ -1,6 +1,6 @@
 <template>
   <div class="items-center column" style="width:1200px">
-    <div class="q-pa-md items-start q-gutter-md">
+    <div class="q-pa-md items-start q-gutter-md" style="width:1200px">
       <q-card flat bordered class="my-card">
         <q-card-section>
           <div class="text-h2"> {{ internship.job_title }} </div>
@@ -13,8 +13,8 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <div class="q-pb-md"> Internship Duration: <span class="text-primary text-bold">{{ internship.duration }} months
-            </span> </div>
+          <div class="q-pb-md"> Internship Duration: <span class="text-primary text-bold">{{ internship.duration }} months</span> </div>
+          <div class="q-pb-md"> Internship Salary: <span class="text-primary text-bold">{{internship.salary_per_month}} JD/month</span></div>
           <div> {{ internship.description }} </div>
         </q-card-section>
 
@@ -25,7 +25,7 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <div v-for="document in internship.required_documents">
+          <div v-for="document in internship.documents_needed">
             • {{ document }}
           </div>
         </q-card-section>
@@ -56,18 +56,16 @@
 <script setup>
 import { ref } from 'vue'
 import { format } from 'quasar'
-const darko = ref("3")
-const internship = ref(
-  {
-    job_title: "Software Developement Engineer",
-    company_name: "shariket a7mad jaber lal ta3leem",
-    duration: 3,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    location: "abdoun",
-    required_documents: ["Resume", "Cover Letter"],
-    qualifications: ["1", "2", "3", "4"],
-    days_left: 7,
-  },
-)
+import { api } from 'src/boot/axios';
+import { useRoute } from "vue-router";
+
+const internship_id = useRoute().params.id;
+
+const internship = ref({})
+api.get('http://localhost:3000/internships/' + internship_id).then((res) => {
+  console.log(res)
+  internship.value = res.data
+})
+
 
 </script>
