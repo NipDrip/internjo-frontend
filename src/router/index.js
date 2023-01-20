@@ -30,28 +30,28 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
 
-  Router.beforeEach((to, from, next) => {
-    if(to.path == '/login'){
-      next()
-      return
-    }
-    api.get('http://localhost:3000/auth/validate_token').then((res) => {
-      // console.log(res)
-      console.log("authenticated")
-      next()
-    }).catch((err) => {
-      console.log("error")
-      Cookies.remove('id')
-      Cookies.remove('uid')
-      Cookies.remove('client')
-      Cookies.remove('access-token')
-      api.defaults.headers.common['uid'] = null
-      api.defaults.headers.common['client'] = null
-      api.defaults.headers.common['access-token'] = null
-      next({ path: '/login' })
-    })
+  // Router.beforeEach((to, from, next) => {
+  //   if(to.path == '/login'){
+  //     next()
+  //     return
+  //   }
+  //   api.get('http://localhost:3000/auth/validate_token').then((res) => {
+  //     // console.log(res)
+  //     console.log("authenticated")
+  //     next()
+  //   }).catch((err) => {
+  //     console.log("error")
+  //     Cookies.remove('id')
+  //     Cookies.remove('uid')
+  //     Cookies.remove('client')
+  //     Cookies.remove('access-token')
+  //     api.defaults.headers.common['uid'] = null
+  //     api.defaults.headers.common['client'] = null
+  //     api.defaults.headers.common['access-token'] = null
+  //     next({ path: '/login' })
+  //   })
 
-  })
+  // })
 
   return Router
 })

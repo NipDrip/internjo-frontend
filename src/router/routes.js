@@ -64,10 +64,11 @@ const routes = [
     redirect: '/admin/validations',
     component: () => import('layouts/AdminMainLayout.vue'),
     children: [
-      { path: 'validations', component: () => import('src/pages/AdminValidations.vue') },
+      { path: 'accounts/company/inactive', component: () => import('src/pages/AdminCompanyInactiveAccounts.vue') },
+      { path: 'accounts/company/active', component: () => import('src/pages/AdminCompanyActiveAccounts.vue') },
+      { path: 'accounts/student/inactive', component: () => import('src/pages/AdminStudentInactiveAccounts.vue') },
+      { path: 'accounts/student/active', component: () => import('src/pages/AdminStudentActiveAccounts.vue') },
       { path: 'reports', component: () => import('src/pages/AdminReports.vue') },
-      { path: 'accounts/company', component: () => import('src/pages/AdminCompanyAccounts.vue') },
-      { path: 'accounts/student', component: () => import('src/pages/AdminStudentAccounts.vue') },
     ]
   },
   {

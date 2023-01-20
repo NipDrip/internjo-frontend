@@ -12,10 +12,15 @@
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="/admin/validations" label="Validations" />
+        <div>
+          <q-route-tab to="/admin/accounts/company/inactive" label="Company Inactive Accounts" />
+          <q-route-tab to="/admin/accounts/company/active" label="Company Active Accounts" />
+        </div>
+        <div>
+          <q-route-tab to="/admin/accounts/student/inactive" label="Student Inactive Accounts" />
+          <q-route-tab to="/admin/accounts/student/active" label="Student active Accounts" />
+        </div>
         <q-route-tab to="/admin/reports" label="Reports" />
-        <q-route-tab to="/admin/accounts/company" label="Company Accounts" />
-        <q-route-tab to="/admin/accounts/student" label="Student Accounts" />
       </q-tabs>
     </q-header>
 
