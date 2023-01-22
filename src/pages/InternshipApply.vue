@@ -69,7 +69,7 @@
   async function apply() {
     // console.log(documents.value)
     let application_id = "";
-    await api.post('http://localhost:3000/applications/', {internship_id: internship_id, status: "Pending"}).then( (res) => {
+    await api.post('http://localhost:3000/applications/', {internship_id: internship_id, status: "pending"}).then( (res) => {
       application_id = res.data.id.toString(10)
     })
 

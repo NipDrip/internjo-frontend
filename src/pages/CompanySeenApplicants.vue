@@ -7,20 +7,18 @@
 
 
             <q-card-section class="bg-primary text-white">
-              <div class="text-h6">{{ application.job_title }}</div>
+              <div class="text-h6">{{ application.job_title }}  (ID: {{ application.id }})</div>
             </q-card-section>
 
             <q-card-section class="text-black">
-              <div> <span class="text-bold"> Name: </span> {{ application.student.first_name }} {{
-                application.student.last_name
-              }} </div>
-              <div> <span class="text-bold"> Email: </span> {{ application.student.email }}</div>
-              <div> <span class="text-bold"> Phone Number: </span> {{ application.student.phone_number }}</div>
-              <div class="q-pt-sm"> <q-btn class="bg-primary text-yellow">Download Documents</q-btn> </div>
+              <div> <span class="text-bold"> Name: </span> {{ application.student_name }} </div>
+              <div> <span class="text-bold"> Email: </span> {{ application.student_email }}</div>
+              <div> <span class="text-bold"> Phone Number: </span> {{ application.phone_number }}</div>
+              <div class="q-pt-sm"> <q-btn class="bg-primary text-yellow" @click="downloadDocuments(application.documents)">Download Documents</q-btn> </div>
             </q-card-section>
             <q-separator inset />
             <q-card-actions align="right">
-              <q-btn class="bg-green text-white" to="internship/1/applicant/1/email"> Send Email to Applicant</q-btn>
+              <q-btn class="bg-green text-white" @click="sendEmail(application.id, application.internship_id, $router)"> Send Email to Applicant</q-btn>
 
             </q-card-actions>
 
@@ -40,51 +38,27 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { format } from 'quasar'
+import { api } from 'src/boot/axios';
+import { exportFile } from 'quasar'
 
-const applications = ref([
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    student:
-    {
-      first_name: "ahmad",
-      last_name: "hammoudeh",
-      email: "ahmad123hammoudeh@gmail.com",
-      phone_number: "+962790898205",
-    }
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    student:
-    {
-      first_name: "ahmad",
-      last_name: "hammoudeh",
-      email: "ahmad123hammoudeh@gmail.com",
-      phone_number: "+962790898205",
-    }
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    student:
-    {
-      first_name: "ahmad",
-      last_name: "hammoudeh",
-      email: "ahmad123hammoudeh@gmail.com",
-      phone_number: "+962790898205",
-    }
-  },
-  {
-    job_title: "Software Engineer",
-    location: "abdoun",
-    student:
-    {
-      first_name: "ahmad",
-      last_name: "hammoudeh",
-      email: "ahmad123hammoudeh@gmail.com",
-      phone_number: "+962790898205",
-    }
-  },
-])
+const applications = ref([])
+api.get('http://localhost:3000/seen_applications').then((res) => {
+  console.log(res.data)
+  applications.value = res.data
+})
+
+function sendEmail(application_id, internship_id, router) {
+  router.push('internship/' + internship_id + '/applicant/' + application_id + '/email');
+}
+
+// function removeCard(i, application_id) {
+//   api.delete('http://localhost:3000/applications/' + application_id)
+//   applications.value.splice(i, 1);
+// }
+
+function downloadDocuments(documents) {
+  for (let i = 0; i < documents.length; ++i) {
+    const status = exportFile(documents[i].name, documents[i].document)
+  }
+}
 </script>

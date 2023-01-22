@@ -39,7 +39,7 @@ import { api } from 'boot/axios'
 import { Cookies } from 'quasar'
 
 
-const offers = ref()
+const offers = ref([])
 
 api.get('http://localhost:3000/saved_internships').then((res) => {
     console.log(res)

@@ -5,7 +5,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/Login.vue'),
     children: [
-      {path: 'login', component: () => import('pages/Login.vue')},
+      { path: 'login', component: () => import('pages/Login.vue') },
+      { path: 'inactive', component: () => import('pages/InactiveUser.vue') },
     ]
   },
   {
@@ -61,7 +62,7 @@ const routes = [
   },
   {
     path: '/admin',
-    redirect: '/admin/validations',
+    redirect: '/admin/accounts/company/inactive',
     component: () => import('layouts/AdminMainLayout.vue'),
     children: [
       { path: 'accounts/company/inactive', component: () => import('src/pages/AdminCompanyInactiveAccounts.vue') },

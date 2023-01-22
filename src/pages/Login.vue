@@ -38,8 +38,9 @@ import { Cookies } from 'quasar'
 const router = useRouter()
 const email = ref()
 const password = ref()
+
 function login (){
-    api.post('http://localhost:3000/auth/sign_in', { email: email.value, password: password.value }).then((res) => {
+    api.post('http://localhost:3000/auth/sign_in', { email: email.value, password: password.value }).then(async (res) => {
       console.log(res)
       Cookies.set('id', res.data.data.id)
       Cookies.set('uid', res.headers['uid'])
@@ -49,6 +50,25 @@ function login (){
       api.defaults.headers.common['client'] = Cookies.get('client')
       api.defaults.headers.common['access-token'] = Cookies.get('access-token')
 
+      let user_status = ""
+
+      await api.get('http://localhost:3000/active').then((res2) => {
+        user_status = res2.data.status
+      })
+
+      if (user_status == "user inactive") {
+        Cookies.remove('id')
+        Cookies.remove('uid')
+        Cookies.remove('client')
+        Cookies.remove('access-token')
+        api.defaults.headers.common['uid'] = null
+        api.defaults.headers.common['client'] = null
+        api.defaults.headers.common['access-token'] = null
+
+        router.push({ path: '/inactive' })
+        return
+      }
+
       if(res.data.data.entity_name == 'student')
         router.push({ path: '/student' })
 
@@ -57,7 +77,10 @@ function login (){
 
       if (res.data.data.entity_name == 'employee'){
         router.push({ path: '/company/employee' })
+      }
 
+      if (res.data.data.entity_name == 'admin') {
+        router.push({ path: '/admin' })
       }
 })
 }

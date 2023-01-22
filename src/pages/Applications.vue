@@ -18,7 +18,7 @@
             <div class="text-subtitle2"> {{ application.location }} </div>
           </q-card-section>
 
-          <q-card-actions class="text-black" align="right" >
+          <q-card-actions v-if="application.status!='pending'" class="text-black" align="right" >
             <q-btn flat @click="$router.push('application/' + application.id + '/review')">Review Company</q-btn>
           </q-card-actions>
 

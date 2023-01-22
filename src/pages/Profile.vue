@@ -85,6 +85,8 @@
   import { ref } from 'vue'
   import { Cookies } from 'quasar';
   import { api } from 'src/boot/axios';
+  import { exportFile } from 'quasar'
+
 
   const documents = ref([{}])
   let need_to_remove = []
@@ -97,6 +99,7 @@
   function addDocument() {
     documents.value.push(null)
   }
+
 
   function removeDocument(i) {
     if (documents.value[i].id != null) need_to_remove.push(documents.value[i].id)

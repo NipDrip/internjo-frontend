@@ -74,8 +74,8 @@ function logout() {
     api.defaults.headers.common['client'] = null
     api.defaults.headers.common['access-token'] = null
   })
-
 }
+
 const leftDrawerOpen = ref(true)
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
