@@ -47,7 +47,6 @@
   const internship_id = useRoute().params.id;
 
 
-  // const account_documents = ref(["Resume", "Cover Letter", "Recommendation Letter"])
   const account_documents = ref([])
   const account_documents_names = ref([])
   api.get('http://localhost:3000/documents/').then((res) => {

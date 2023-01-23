@@ -6,6 +6,9 @@ const routes = [
     component: () => import('layouts/Login.vue'),
     children: [
       { path: 'login', component: () => import('pages/Login.vue') },
+      { path: 'signupstudent', component: () => import('pages/StudentCreateNewAccount.vue') },
+      { path: 'signupcompany', component: () => import('pages/CompanyCreateNewAccount.vue') },
+      { path: 'signupemployee', component: () => import('pages/EmployeeCreateNewAccount.vue') },
       { path: 'inactive', component: () => import('pages/InactiveUser.vue') },
     ]
   },

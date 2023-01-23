@@ -31,6 +31,18 @@ export default route(function (/* { store, ssrContext } */) {
   })
 
   Router.beforeEach((to, from, next) => {
+    if (to.path == '/signupstudent') {
+      next()
+      return
+    }
+    if (to.path == '/signupcompany') {
+      next()
+      return
+    }
+    if (to.path == '/signupemployee') {
+      next()
+      return
+    }
     if (to.path == '/inactive') {
       next()
       return

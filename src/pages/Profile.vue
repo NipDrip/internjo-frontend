@@ -127,7 +127,6 @@
         console.log(res)
       })
     }
-
     location.reload();
   }
 

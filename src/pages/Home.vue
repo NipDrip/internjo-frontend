@@ -1,6 +1,6 @@
 <template>
   <div v-if="offers.length==0" class="q-pa-lg">
-    <h3>Your feed is empty! Follow companies to have a more lively feed!</h3>
+    <h3>Your feed is empty! Follow companies to have a lively feed!</h3>
   </div>
   <div class="row">
     <div v-for="(offer, i) in offers" class="q-pa-md row items-start q-gutter-md">

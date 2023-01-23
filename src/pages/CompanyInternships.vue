@@ -8,7 +8,7 @@
           <q-card class="my-card shadow-6" style="width:1200px">
 
 
-            <q-card-section class="bg-secondary text-white">
+            <q-card-section class="bg-primary text-white">
               <div class="text-h6">{{internship.job_title}}</div>
               <div class="text-subtitle2"> {{ internship.date}} </div>
             </q-card-section>

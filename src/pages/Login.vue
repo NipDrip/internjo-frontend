@@ -1,7 +1,7 @@
 
 <template>
   <q-page class="window-height window-width row justify-center items-center">
-    <div class="column" style="width: 400px">
+    <div class="column" style="width: 450px">
       <q-card square bordered class="q-pa-sm shadow-4">
 
         <q-card-section>
@@ -12,16 +12,23 @@
           <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
             <q-input filled v-model="email" label="Your Email *" />
             <q-input filled type="password" v-model="password" label="Password *" />
-            <q-btn @click="login" label="Login" color="primary" style="width: 350px" />
+            <q-btn @click="login" label="Login" color="primary" style="width: 400px" />
           </q-form>
         </q-card-section>
 
         <q-separator />
 
         <q-card-section>
-          <div>
-            <q-btn color="green" label="Create new account" style="width: 350px" />
+          <div class="q-py-xs">
+            <q-btn  color="green" to="/signupstudent" label="Create new account (Students)" style="width: 400px"/>
           </div>
+          <div class="q-py-xs">
+            <q-btn color="green" to="/signupcompany" label="Create new account (Company)" style="width: 400px" />
+          </div>
+          <div class="q-py-xs">
+            <q-btn color="green" to="/signupemployee" label="Create new account (Employee at a Company)" style="width: 400px" />
+          </div>
+
         </q-card-section>
 
       </q-card>
@@ -34,6 +41,14 @@ import { useRouter } from 'vue-router';
 import { api } from 'src/boot/axios';
 import { ref } from 'vue';
 import { Cookies } from 'quasar'
+
+Cookies.remove('id')
+Cookies.remove('uid')
+Cookies.remove('client')
+Cookies.remove('access-token')
+api.defaults.headers.common['uid'] = null
+api.defaults.headers.common['client'] = null
+api.defaults.headers.common['access-token'] = null
 
 const router = useRouter()
 const email = ref()
